@@ -1,0 +1,22 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% include "header.html" %}
+
+    <!-- Start Item Details -->
+
+    <section class="item-details section">
+        <div class="container">
+            <div class="top-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Item Details -->
+
+{% include "footer.html" %}
+{% endblock %}

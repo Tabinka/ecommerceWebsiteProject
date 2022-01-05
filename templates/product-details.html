@@ -1,0 +1,84 @@
+{% block content %}
+{% include "header.html" %}
+
+
+    <!-- Start Item Details -->
+
+    <section class="item-details section">
+        <div class="container">
+            <div class="top-area">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-images">
+                            <main id="gallery">
+                                <div class="main-img">
+                                    <img src="{{prod.image}}" id="current" alt="product main image">
+                                </div>
+                            </main>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-12">
+                        <div class="product-info">
+                            <h2 class="title">{{prod.name}}</h2>
+                            <p class="category"><i class="lni lni-tag"></i> <a href="/{{category_alias}}">{{category_name}}</a></p>
+                            <h3 class="price">${{prod.price}}<span>$549</span></h3>
+                            <p class="info-text">{{prod.description|safe}}</p>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="form-group quantity">
+                                        <label>Quantity</label>
+                                        <select class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-4 col-12">
+                                    <div class="form-group stock" style="height: 100%;">
+                                        <label>Availability</label>
+                                        <p style="font-size: 18px; margin: 2% 0;">
+                                            {% if prod.stock > 0: %}
+                                                 In Stock <i class="lni lni-checkmark" style="color: lightgreen; margin-left: 5px;"></i>
+                                            {% else %}
+                                                 Not Available <i class="lni lni-cross-circle" style="color: lightred; margin-left: 5px;"></i>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if prod.stock > 0: %}
+                            <div class="bottom-content">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-4 col-md-4 col-12" style="width: 100%;">
+                                        <div class="button cart-button">
+                                            <button class="btn" style="width: 100%;"><a href="">Add to Cart</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-details-info">
+                <div class="single-block">
+                    <div class="row">
+                        <div class="col-lg-6 col-12">
+                            <div class="info-body custom-responsive-margin">
+                                <h4>Product Detail</h4>
+                                <p>{{prod.description|safe}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Item Details -->
+
+{% include "footer.html" %}
+{% endblock %}

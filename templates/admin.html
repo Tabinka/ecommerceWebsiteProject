@@ -1,0 +1,41 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+{% include "admin_header.html" %}
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-info">
+                        <a href="url_for('add_new_product')">Add Product</a>
+                    </button>
+                </div>
+                <div class="col-12">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Name of the product</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                    {% for product in list_products: %}
+                        <tr>
+                          <th scope="row">{{product.id}}</th>
+                          <td><a href="{{ url_for('edit_product', product_id=product.id) }}">{{product.name}}</a></td>
+                          <td>${{product.price}}</td>
+                          <td><a href="{{ url_for('delete_product', product_id=product.id) }}">x</a></td>
+                        </tr>
+                    {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% include "admin_footer.html" %}
+{% endblock %}
