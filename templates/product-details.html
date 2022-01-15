@@ -23,11 +23,12 @@
                             <p class="category"><i class="lni lni-tag"></i> <a href="/{{category_alias}}">{{category_name}}</a></p>
                             <h3 class="price">${{prod.price}}<span>$549</span></h3>
                             <p class="info-text">{{prod.description|safe}}</p>
+                            <form action="{{ url_for('add_to_cart', prod_alias=prod.alias) }}" method="POST">
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group quantity">
                                         <label>Quantity</label>
-                                        <select class="form-control">
+                                        <select name="qty" class="form-control">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -54,12 +55,17 @@
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12" style="width: 100%;">
                                         <div class="button cart-button">
-                                            <button class="btn" style="width: 100%;"><a href="">Add to Cart</a></button>
+                                            <input type="hidden" name="alias" value="{{prod.alias}}">
+                                            <input type="hidden" name="name" value="{{prod.name}}">
+                                            <input type="hidden" name="price" value="{{prod.price}}">
+                                            <input type="hidden" name="prod_id" value="{{prod.id}}">
+                                            <button type="submit" class="btn" style="width: 100%;">Add to Cart</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             {% endif %}
+                        </form>
                         </div>
                     </div>
                 </div>
